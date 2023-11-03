@@ -1,0 +1,113 @@
+<?php
+
+namespace Database\Seeders;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use PhpParser\Node\Expr\Cast\Object_;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@gmail.com',
+        ]);
+
+        $preset_data = [
+            [
+                'name' => 'Elegant',
+                'file_name' => 'presets\elegant',
+                'default_data' => [
+                    'banner_section' => [
+                        'banner_title' => 'you and someone wedding',
+                        'banner_quote' => 'we are glad to invite you to our dream wedding'
+                    ],
+                    'cover_section' => [
+                        'cover_title' => 'bride and groom',
+                        'cover_wedding_date' => '17 November 2023'
+                    ]
+                ],
+                'data' => [
+                    'banner_section' => [
+                        'banner_title' => 'you and i wedding',
+                        'banner_quote' => 'we are glad to invite you to our dream wedding'
+                    ],
+                    'cover_section' => [
+                        'cover_title' => 'bride and groom',
+                        'cover_wedding_date' => '17 November 2023'
+                    ]
+                ],
+            ],
+            [
+                'name' => 'Beautifull',
+                'file_name' => 'presets\beautifull',
+                'default_data' => [
+                    'banner_section' => [
+                        'banner_title' => 'you and someone dream wedding',
+                        'banner_quote' => 'we are glad to invite you to our dream wedding, our pleasure'
+                    ],
+                    'cover_section' => [
+                        'cover_title' => 'bride and groom',
+                        'cover_wedding_date' => '08 November 2023'
+                    ]
+                ],
+                'data' => [
+                    'banner_section' => [
+                        'banner_title' => 'you and i dream wedding',
+                        'banner_quote' => 'we are glad to invite you to our dream wedding, our pleasure'
+                    ],
+                    'cover_section' => [
+                        'cover_title' => 'bride and groom',
+                        'cover_wedding_date' => '08 November 2023'
+                    ]
+                ],
+            ],
+            [
+                'name' => 'Simple',
+                'file_name' => 'presets\simple',
+                'default_data' => [
+                    'banner_section' => [
+                        'banner_title' => 'name of me and name of my partner',
+                        'banner_quote' => 'we are very happy to invite you to our dream wedding'
+                    ],
+                    'cover_section' => [
+                        'cover_title' => 'bride and groom',
+                        'cover_wedding_date' => '20 November 2023'
+                    ]
+                ],
+                'data' => [
+                    'banner_section' => [
+                        'banner_title' => 'name of me and name of you',
+                        'banner_quote' => 'we are very happy to invite you to our dream wedding'
+                    ],
+                    'cover_section' => [
+                        'cover_title' => 'bride and groom',
+                        'cover_wedding_date' => '20 November 2023'
+                    ]
+                ],
+            ],
+        ];
+        foreach ($preset_data as $k => $d){
+            \App\Models\Preset::factory()
+            ->has(\App\Models\Wedding::factory()->state(
+                function(array $attr) use($user){
+                    return ['user_id' => $user->id];
+                })->has(\App\Models\Section::factory()->state(function(array $attr, \App\Models\Wedding $wedding) use($d){
+                    return [
+                        'preset_id' => $wedding->preset_id,
+                        'data' => $d['data'],
+                    ];
+                })))
+            ->create([
+                'name' => $d['name'],
+                'file_name' => $d['file_name'],
+                'default_data' => $d['default_data'],
+            ]);
+        }
+    }
+}
