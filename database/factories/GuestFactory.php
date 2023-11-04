@@ -20,7 +20,7 @@ class GuestFactory extends Factory
         return [
             'guest_name' => $this->faker->name(),
             'guest_email' => $this->faker->email(),
-            'guest_phone' => $this->faker->phone(),
+            'guest_phone' => $this->faker->phoneNumber(),
             'guest_type' => $this->faker->randomElement(['vip', 'common']),
             'guest_status' => $this->faker->randomElement(['new', 'openend', 'invited', 'going', 'not_going']),
             'guest_amount' => $this->faker->numberBetween(1, 2),

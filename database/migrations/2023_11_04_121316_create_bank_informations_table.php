@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bank_information', function (Blueprint $table) {
+        Schema::create('bank_informations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
             $table->string('account_name_holder')->required();

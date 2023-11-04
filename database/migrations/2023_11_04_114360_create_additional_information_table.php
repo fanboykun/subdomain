@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('song_id')->nullable();
             $table->boolean('is_streaming_enabled')->default(false)->nullable();
             $table->enum('streaming_platform', ['youtube', 'zoom', 'google_meet', 'other'])->default('youtube')->nullable();
-            $table->string('streaming_link')->nullable();
             $table->boolean('is_has_instagram_filter')->default(false)->nullable();
             $table->string('instagram_filter_link')->nullable();
             $table->string('streaming_link')->nullable();
