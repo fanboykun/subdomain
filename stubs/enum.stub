@@ -1,0 +1,13 @@
+<?php
+
+namespace $NAMESPACE$;
+
+enum $CLASS_NAME$:$TYPE$
+{
+    // variables for enumerate goes here
+    // example enum is in line below
+    // go make something brrr
+
+    case CONSTANT = 'value';
+
+}
