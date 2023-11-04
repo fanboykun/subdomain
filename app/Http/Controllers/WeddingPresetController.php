@@ -13,7 +13,6 @@ class WeddingPresetController extends Controller
         if(!file_exists(resource_path('views/' . $wedding->preset->file_name. '.blade.php'))){
             return abort(404);
         }
-        config(['debugbar.enabled' => false]);
         return view($wedding->preset->file_name, ['wedding' => $wedding]);
     }
 }

@@ -19,4 +19,10 @@ class IndexTemplate extends Component
     {
         return view('livewire.templates.index-template');
     }
+
+    public function open () : void
+    {
+        sleep(3);
+        return ;
+    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Wedding extends Model
@@ -36,6 +37,11 @@ class Wedding extends Model
     public function section() : HasOne
     {
         return $this->hasOne(Section::class);
+    }
+
+    public function guests() : HasMany
+    {
+        return $this->hasMany(Guest::class);
     }
     // public function presets() : BelongsToMany
     // {

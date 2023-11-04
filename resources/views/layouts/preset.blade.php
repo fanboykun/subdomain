@@ -11,26 +11,23 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
          <!-- Styles -->
         <style>
-            html {
+            /* html {
                 scroll-behavior: smooth;
             }
 
             body {
-                /* font-family: 'Josefin Sans', sans-serif; */
                 padding: 0 !important;
                 -ms-overflow-style: none;
                 scrollbar-width: none;
-            }
+            } */
 
             [x-cloak] { display: none !important; }
 
         </style>
         <!-- Scripts -->
-        
-                @stack('head-scripts')
 
-
-                @stack('styles')
+        @stack('head-scripts')
+        @stack('styles')
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/alpine.js'])
     </head>
     <body class="antialiased">

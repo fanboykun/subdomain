@@ -18,6 +18,7 @@ class CheckWeddingExistance
     {
         $wedding = $request->route('wedding');
         Wedding::findOrFail($wedding->id);
+        config(['debugbar.enabled' => false]);
         return $next($request);
     }
 }

@@ -30,6 +30,10 @@ class DatabaseSeeder extends Seeder
                     'cover_section' => [
                         'cover_title' => 'bride and groom',
                         'cover_wedding_date' => '17 November 2023'
+                    ],
+                    'customize' => [
+                        'cover_title_font_style' => 'mono',
+                        'cover_title_text_color' => 'text-indigo-700'
                     ]
                 ],
                 'data' => [
@@ -40,6 +44,10 @@ class DatabaseSeeder extends Seeder
                     'cover_section' => [
                         'cover_title' => 'bride and groom',
                         'cover_wedding_date' => '17 November 2023'
+                    ],
+                    'customize' => [
+                        'cover_title_font_style' => 'mono',
+                        'cover_title_text_color' => 'text-indigo-700'
                     ]
                 ],
             ],
@@ -54,6 +62,10 @@ class DatabaseSeeder extends Seeder
                     'cover_section' => [
                         'cover_title' => 'bride and groom',
                         'cover_wedding_date' => '08 November 2023'
+                    ],
+                    'customize' => [
+                        'cover_title_font_style' => 'mono',
+                        'cover_title_text_color' => 'text-teal-700'
                     ]
                 ],
                 'data' => [
@@ -64,6 +76,10 @@ class DatabaseSeeder extends Seeder
                     'cover_section' => [
                         'cover_title' => 'bride and groom',
                         'cover_wedding_date' => '08 November 2023'
+                    ],
+                    'customize' => [
+                        'cover_title_font_style' => 'mono',
+                        'cover_title_text_color' => 'text-teal-700'
                     ]
                 ],
             ],
@@ -78,6 +94,10 @@ class DatabaseSeeder extends Seeder
                     'cover_section' => [
                         'cover_title' => 'bride and groom',
                         'cover_wedding_date' => '20 November 2023'
+                    ],
+                    'customize' => [
+                        'cover_title_font_style' => 'mono',
+                        'cover_title_text_color' => 'text-lime-700'
                     ]
                 ],
                 'data' => [
@@ -88,6 +108,10 @@ class DatabaseSeeder extends Seeder
                     'cover_section' => [
                         'cover_title' => 'bride and groom',
                         'cover_wedding_date' => '20 November 2023'
+                    ],
+                    'customize' => [
+                        'cover_title_font_style' => 'mono',
+                        'cover_title_text_color' => 'text-lime-700'
                     ]
                 ],
             ],
@@ -97,7 +121,9 @@ class DatabaseSeeder extends Seeder
             ->has(\App\Models\Wedding::factory()->state(
                 function(array $attr) use($user){
                     return ['user_id' => $user->id];
-                })->has(\App\Models\Section::factory()->state(function(array $attr, \App\Models\Wedding $wedding) use($d){
+                })
+                ->has(\App\Models\Guest::factory()->count(5))
+                ->has(\App\Models\Section::factory()->state(function(array $attr, \App\Models\Wedding $wedding) use($d){
                     return [
                         'preset_id' => $wedding->preset_id,
                         'data' => $d['data'],
