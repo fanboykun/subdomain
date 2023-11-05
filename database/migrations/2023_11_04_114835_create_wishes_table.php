@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('wishes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
             $table->string('wish_title')->required();
             $table->longText('wish_description')->nullable();
             $table->boolean('is_publicly_visible')->default(false)->nullable();

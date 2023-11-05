@@ -43,8 +43,4 @@ class Wedding extends Model
     {
         return $this->hasMany(Guest::class);
     }
-    // public function presets() : BelongsToMany
-    // {
-    //     return $this->belongsToMany(Preset::class)->withPivot(['data'])->as('sections')->withTimestamps();
-    // }
 }

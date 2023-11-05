@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
-            $table->boolean('is_picture_enabled')->default(false);
-            $table->string('pictures')->nullable();
+            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->boolean('is_picture_enabled')->default(true);
+            $table->string('pictures_link')->nullable();
             $table->string('pictures_title')->nullable();
             $table->boolean('is_video_enabled')->default(false);
             $table->string('video_link')->nullable();

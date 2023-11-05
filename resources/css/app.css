@@ -3,3 +3,8 @@
 @tailwind utilities;
 
 [x-cloak] { display: none !important; }
+
+#nprogress .bar {
+    background: #CFB53B !important;
+}
+

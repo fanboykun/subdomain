@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('event_id')->required()->constrained()->cascadeOnDelete();
             $table->date('date')->required();
             $table->string('activity_title')->required();
             $table->longText('activity_description')->nullable();
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->time('finish_time')->nullable();
             $table->boolean('is_main_event')->default(false);
             $table->boolean('is_publicly_visible')->default(true);
-            $table->boolean('is_map_visible')->default(true);
+            $table->boolean('is_map_visible')->default(false);
             $table->longText('google_map_pin')->required();
             $table->string('address_location')->required();
             $table->string('place_location')->required();

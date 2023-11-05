@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('covers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
             $table->boolean('is_logo_enabled')->default(true);
             $table->string('cover_title')->required();
             $table->string('cover_upper_text')->required();
             $table->string('cover_lower_text')->nullable();
             $table->string('cover_desktop')->required();
-            $table->string('cover_mobile')->required();
+            $table->string('cover_mobile')->nullable();
             $table->timestamps();
         });
     }

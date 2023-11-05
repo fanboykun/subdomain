@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('wish_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('wish_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('wedding_id')->nullable();
             $table->string('wish_sender_name')->required();
             $table->longText('wish_message')->required();
             $table->boolean('is_selected')->default(false);

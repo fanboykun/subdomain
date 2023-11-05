@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('gifts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
             $table->string('gift_title')->required();
             $table->longText('gift_description')->nullable();
             $table->boolean('is_form_visible')->default(true);

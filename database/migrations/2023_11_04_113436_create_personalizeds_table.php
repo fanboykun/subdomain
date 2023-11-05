@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('personalizeds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
             $table->boolean('is_greeting_visible')->default(true);
             $table->string('personalized_title')->required();
             $table->longText('personalized_description')->nullable();
-            $table->boolean('is_rsvp_visible')->default(false);
-            $table->string('coming_text')->required();
-            $table->string('notcoming_text')->required();
-            $table->string('coming_message')->required();
-            $table->string('notcoming_message')->required();
+            $table->boolean('is_rsvp_visible')->default(true);
+            $table->string('going_text')->required();
+            $table->string('notgoing_text')->required();
+            $table->string('going_message')->required();
+            $table->string('notgoing_message')->required();
             $table->date('last_check')->nullable();
             $table->timestamps();
         });

@@ -21,7 +21,10 @@
                 scrollbar-width: none;
             } */
 
-            [x-cloak] { display: none !important; }
+            /* [x-cloak] { display: none !important; }
+            #nprogress .bar {
+                 background: red !important;
+             } */
 
         </style>
         <!-- Scripts -->

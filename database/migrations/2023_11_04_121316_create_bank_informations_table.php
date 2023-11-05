@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bank_informations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
             $table->string('account_name_holder')->required();
             $table->enum('bank_type', ['BNI', 'BCA', 'BRI', 'MANDIRI'])->required();
             $table->string('account_number')->required();
