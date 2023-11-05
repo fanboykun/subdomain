@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
             $table->string('event_title')->required();
             $table->longText('event_description')->nullable();
-            $table->date('date')->required();
+            $table->date('event_date')->required();
             $table->timestamps();
         });
     }

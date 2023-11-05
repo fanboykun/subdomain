@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('event_id')->required()->constrained()->cascadeOnDelete();
-            $table->date('date')->required();
+            $table->date('activity_date')->required();
             $table->string('activity_title')->required();
             $table->longText('activity_description')->nullable();
             $table->time('start_time')->required();
