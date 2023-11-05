@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('opening_cover_title')->required();
             $table->string('opening_cover_body')->required();
             $table->string('opening_cover_button_text')->required();
-            $table->string('    ')->required();
+            $table->string('opening_cover_desktop')->required();
             $table->string('opening_cover_mobile')->nullable();
             $table->timestamps();
         });
