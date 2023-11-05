@@ -12,7 +12,12 @@ class Preset extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'default_data',  'description', 'file_name'];
+    protected $fillable = [
+        'name',
+        'default_data',
+        'description',
+        'file_name'
+    ];
 
     protected $casts = [
         'default_data' => 'array'

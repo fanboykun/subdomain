@@ -10,7 +10,15 @@ class Guest extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['guest_name', 'guest_email', 'guest_phone', 'guest_type', 'guest_status', 'guest_amount', 'code'];
+    protected $fillable = [
+        'guest_name',
+        'guest_email',
+        'guest_phone',
+        'guest_type',
+        'guest_status',
+        'guest_amount',
+        'code'
+    ];
 
     public function wedding() : BelongsTo
     {
