@@ -56,6 +56,32 @@ class SocialiteController extends Controller
 
     public function handleFacebookCallback()
     {
+        try{
 
+            $user = Socialite::driver('facebook')->user();
+            $finduser = User::where('oauth_id', $user->id)->first();
+            if($finduser){
+                Auth::login($finduser);
+                session()->regenerate();
+                return redirect()->intended('/dashboard');
+            }else{
+                $newUser = User::updateOrCreate([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'password' => Hash::make('password'),
+                    'remember_token' => Str::random(10),
+                    'oauth_id'=> $user->id,
+                    'oauth_provider' => OauthProvider::FACEBOOK,
+                ]);
+                Auth::login($newUser);
+                session()->regenerate();
+                return redirect()->intended('/dashboard');
+            }
+
+        }catch (\Exception $e) {
+            dd($e);
+            return redirect('/');
+
+        }
     }
 }
