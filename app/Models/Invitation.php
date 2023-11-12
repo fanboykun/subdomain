@@ -2,33 +2,39 @@
 
 namespace App\Models;
 
+use App\Enum\InvitationPlanningStep;
+use App\Enum\InvitationStatus;
+use App\Enum\InvitationType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Wedding extends Model
+class Invitation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'preset_id',
-        'bride',
-        'groom',
+        'user_id', // shouldn't be fillable here, because it's relation ship, but let it be fillable for now
+        'preset_id', // shouldn't be fillable here, because it's relation ship, but let it be fillable for now
         'subdomain',
-        'date',
-        'status'
+        'main_wedding_date',
+        'status', // enum value
+        'type', // enum value
+        'planning_step', // enum value
     ];
 
     protected $casts = [
-        'date' => 'date'
+        'main_wedding_date' => 'date',
+        'status' => InvitationStatus::class,
+        'type' => InvitationType::class,
+        'planning_step' => InvitationPlanningStep::class,
     ];
 
     public function fullSubDomain() : string
     {
-        return route('wedding.home', ['wedding' => $this]);
+        return route('invitation.home', ['invitation' => $this]);
     }
 
     public function user() : BelongsTo

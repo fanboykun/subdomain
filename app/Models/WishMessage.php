@@ -20,8 +20,8 @@ class WishMessage extends Model
         'is_selected' => 'boolean'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 }

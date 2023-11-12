@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('role')->default(App\Enum\Role::CLIENT)->required();
             $table->string('email')->unique();
+            $table->string('oauth_id')->nullable()->unique();
+            $table->enum('oauth_provider', ['google', 'facebook'])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->required()->cascadeOnDelete();
             $table->foreignId('preset_id')->required();
             $table->json('data')->required();
             $table->timestamps();

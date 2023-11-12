@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->required()->constrained()->cascadeOnDelete();
             $table->boolean('is_picture_enabled')->default(true);
             $table->string('pictures_link')->nullable();
             $table->string('pictures_title')->nullable();

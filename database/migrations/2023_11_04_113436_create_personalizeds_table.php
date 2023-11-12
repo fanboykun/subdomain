@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('personalizeds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->required()->constrained()->cascadeOnDelete();
             $table->boolean('is_greeting_visible')->default(true);
             $table->string('personalized_title')->required();
             $table->longText('personalized_description')->nullable();

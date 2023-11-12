@@ -22,8 +22,8 @@ class Wish extends Model
         'is_review_enabled' => 'boolean'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 }

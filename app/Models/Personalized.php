@@ -27,9 +27,9 @@ class Personalized extends Model
         'last_check' => 'date:d-m-Y'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
 }

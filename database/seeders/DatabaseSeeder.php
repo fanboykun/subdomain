@@ -118,14 +118,14 @@ class DatabaseSeeder extends Seeder
         ];
         foreach ($preset_data as $k => $d){
             \App\Models\Preset::factory()
-            ->has(\App\Models\Wedding::factory()->state(
+            ->has(\App\Models\Invitation::factory()->state(
                 function(array $attr) use($user){
                     return ['user_id' => $user->id];
                 })
                 ->has(\App\Models\Guest::factory()->count(5))
-                ->has(\App\Models\Section::factory()->state(function(array $attr, \App\Models\Wedding $wedding) use($d){
+                ->has(\App\Models\Section::factory()->state(function(array $attr, \App\Models\Invitation $invitation) use($d){
                     return [
-                        'preset_id' => $wedding->preset_id,
+                        'preset_id' => $invitation->preset_id,
                         'data' => $d['data'],
                     ];
                 })))

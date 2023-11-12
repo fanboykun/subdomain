@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bridegrooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->required()->constrained()->cascadeOnDelete();
             $table->string('bride')->required();
             $table->string('groom')->required();
             $table->string('main_bride_picture')->required();

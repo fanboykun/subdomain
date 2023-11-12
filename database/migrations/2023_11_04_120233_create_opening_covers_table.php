@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('opening_covers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->required()->constrained()->cascadeOnDelete();
             $table->string('opening_cover_title')->required();
             $table->string('opening_cover_body')->required();
             $table->string('opening_cover_button_text')->required();

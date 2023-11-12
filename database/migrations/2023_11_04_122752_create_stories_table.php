@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->required()->constrained()->cascadeOnDelete();
             $table->boolean('is_story_enabled')->default(true);
             $table->string('story_title')->required();
             $table->timestamps();

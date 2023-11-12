@@ -24,9 +24,9 @@ class Gift extends Model
         'is_publicly_visible' => 'boolean'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
     public function gifters() : HasMany

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-require __DIR__.'/invitation.php';
+require __DIR__.'/invitation_route.php';
 
 Route::view('/', 'welcome');
 

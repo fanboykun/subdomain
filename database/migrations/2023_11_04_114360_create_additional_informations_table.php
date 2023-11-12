@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('additional_informations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('invitation_id')->constrained()->cascadeOnDelete();
             $table->foreignId('protocol_id')->nullable()->nullOnDelete();
             $table->foreignId('song_id')->nullable()->nullOnDelete();
             $table->enum('language', ['id', 'en'])->default('id')->nullable();

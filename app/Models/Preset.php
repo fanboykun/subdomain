@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\PresetType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,25 +15,29 @@ class Preset extends Model
 
     protected $fillable = [
         'name',
+        'file_name',
+        'thumbnail',
+        'type',
+        'color_pallete',
         'default_data',
         'description',
-        'file_name'
     ];
 
     protected $casts = [
-        'default_data' => 'array'
+        'default_data' => 'array',
+        'type' => PresetType::class,
     ];
 
-    public function weddings() : HasMany
+    public function invitations() : HasMany
     {
-        return $this->hasMany(Wedding::class);
+        return $this->hasMany(Invitation::class);
     }
 
     public function sections() : HasMany
     {
         return $this->hasMany(Section::class);
     }
-    // public function weddings() : BelongsToMany
+    // public function invitations() : BelongsToMany
     // {
     //     return $this->belongsToMany(Wedding::class)->withPivot(['data'])->as('sections')->withTimestamps();
     // }

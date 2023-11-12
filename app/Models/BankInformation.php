@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\BankType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,9 +18,13 @@ class BankInformation extends Model
         'account_qrcode',
     ];
 
-    public function wedding() : BelongsTo
+    protected $casts = [
+        'bank_type' => BankType::class,
+    ];
+
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
 }

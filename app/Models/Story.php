@@ -20,9 +20,14 @@ class Story extends Model
         'is_story_enabled' => 'boolean'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
+    }
+
+    public function storyDetails() : HasMany
+    {
+        return $this->hasMany(StoryDetail::class);
     }
 
 }

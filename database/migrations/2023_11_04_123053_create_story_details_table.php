@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('story_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->required()->constrained()->cascadeOnDelete();
+            $table->foreignId('story_id')->required()->constrained()->cascadeOnDelete();
             $table->string('story_subtitle')->required();
             $table->longText('story_description')->required();
             $table->string('story_picture')->required();

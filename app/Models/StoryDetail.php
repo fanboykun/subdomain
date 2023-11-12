@@ -16,9 +16,9 @@ class StoryDetail extends Model
         'story_picture',
     ];
 
-    public function wedding() : BelongsTo
+    public function story() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Story::class);
     }
 
 }

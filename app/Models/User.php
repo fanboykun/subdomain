@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enum\OauthProvider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'oauth_id',
+        'oauth_provider',
     ];
 
     /**
@@ -42,10 +46,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'oauth_provider' => OauthProvider::class,
     ];
 
-    public function weddings() : HasMany
+    public function invitations() : HasMany
     {
-        return $this->hasMany(Wedding::class);
+        return $this->hasMany(Invitation::class);
     }
 }

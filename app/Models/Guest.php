@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enum\GuestStatus;
+use App\Enum\GuestType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,8 +22,13 @@ class Guest extends Model
         'code'
     ];
 
-    public function wedding() : BelongsTo
+    protected $casts = [
+        'guest_type' => GuestType::class,
+        'guest_status' => GuestStatus::class,
+    ];
+
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 }

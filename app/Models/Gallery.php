@@ -23,9 +23,9 @@ class Gallery extends Model
         'is_picture_enabled' => 'boolean'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
 }

@@ -1,10 +1,19 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::middleware('guest')->group(function () {
+
+    Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.redirect');
+    Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback'])->name('google.callback');
+
+    Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook'])->name('facebook.redirect');
+    Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback'])->name('facebook.callback');
+
+
     Volt::route('register', 'pages.auth.register')
         ->name('register');
 

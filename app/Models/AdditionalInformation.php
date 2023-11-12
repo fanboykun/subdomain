@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enum\InvitationLanguage;
+use App\Enum\StreamingPlatform;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,11 +27,13 @@ class AdditionalInformation extends Model
         'is_streaming_enabled' => 'boolean',
         'is_has_instagram_filter' => 'boolean',
         'is_countdown_enabled' => 'boolean',
+        'language' => InvitationLanguage::class,
+        'streaming_platform' => StreamingPlatform::class,
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
     public function song() : BelongsTo

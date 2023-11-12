@@ -30,8 +30,8 @@ class Bridegroom extends Model
         'is_parent_name_visible' => 'boolean'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 }

@@ -18,9 +18,9 @@ class OpeningCover extends Model
         'opening_cover_mobile',
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
 }

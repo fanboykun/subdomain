@@ -12,7 +12,7 @@ class Section extends Model
 
     protected $fillable = [
         'preset_id',
-        'wedding_id',
+        'invitation_id',
         'data'
     ];
 
@@ -20,9 +20,9 @@ class Section extends Model
         'data' => 'array'
     ];
 
-    public function wedding() : BelongsTo
+    public function invitation() : BelongsTo
     {
-        return $this->belongsTo(Wedding::class);
+        return $this->belongsTo(Invitation::class);
     }
 
     public function preset() : BelongsTo
