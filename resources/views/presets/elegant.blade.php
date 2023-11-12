@@ -5,15 +5,15 @@
             banner_section : { open : true },
             go() { this.banner_section = false }
         }">
-        @if($wedding && $wedding != null)
+        @if($invitation && $invitation != null)
         {{-- <div class="w-screen h-screen max-h-screen bg-center bg-no-repeat bg-gray-700 bg-blend-multiply bg-[url('{{ asset('image-2.jpg') }}')]"> --}}
         <div class="w-screen h-screen max-h-screen bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" style="background-image: url({{ asset('image-2.jpg') }})">
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-                <div class="font-{{ array_key_exists('customize', $wedding->section->data) ? $wedding->section->data["customize"]["cover_title_font_style"] : '' }} {{ array_key_exists('customize', $wedding->section->data) ? $wedding->section->data["customize"]["cover_title_text_color"] : 'text-white' }}">
-                    <h1 class=" mb-4 text-2xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-5xl">{{ Str::title($wedding->section->data["cover_section"]["cover_title"]) }}</h1>
+                <div class="font-{{ array_key_exists('customize', $invitation->section->data) ? $invitation->section->data["customize"]["cover_title_font_style"] : '' }} {{ array_key_exists('customize', $invitation->section->data) ? $invitation->section->data["customize"]["cover_title_text_color"] : 'text-white' }}">
+                    <h1 class=" mb-4 text-2xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-5xl">{{ Str::title($invitation->section->data["cover_section"]["cover_title"]) }}</h1>
                 </div>
-                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{{ Str::title($wedding->section->data["banner_section"]["banner_quote"]) }}</p>
-                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{{ Str::title($wedding->section->data["banner_section"]["banner_title"]) }} : {{ Str::title($wedding->section->data["cover_section"]["cover_wedding_date"]) }}</p>
+                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{{ Str::title($invitation->section->data["banner_section"]["banner_quote"]) }}</p>
+                {{-- <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{{ Str::title($invitation->section->data["banner_section"]["banner_title"]) }} : {{ Str::title($invitation->section->data["cover_section"]["cover_invitation_date"]) }}</p> --}}
                 <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                     <button x-on:click="go" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                         Open Invitation

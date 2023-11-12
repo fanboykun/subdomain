@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\File;
 */
 
 // Route::group(['middleware' => PresetLayoutMiddleware::class, 'domain' => '{wedding:subdomain}.' .env('APP_URL',)], function(){
-Route::group(['domain' => '{wedding:subdomain}.' .env('APP_URL'), 'middleware' => CheckWeddingExistance::class], function(){
-    Route::get('/', WeddingPresetController::class)->name('wedding.home');
+Route::group(['domain' => '{invitation:subdomain}.' .env('APP_URL'), 'middleware' => CheckWeddingExistance::class], function(){
+    Route::get('/', WeddingPresetController::class)->name('invitation.home');
 
 });

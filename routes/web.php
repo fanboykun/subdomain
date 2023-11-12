@@ -30,11 +30,11 @@ Route::group(['middleware' => 'auth'], function() {
         if(!file_exists(resource_path('views/' . $preset->file_name. '.blade.php'))){
             return abort(404);
         }
-        return view($preset->file_name, ['wedding' => []]);
+        return view($preset->file_name, ['invitation' => []]);
     })->name('templates.view');
 
-    Route::get('/{wedding:subdomain}/edit', EditWeddingPreset::class)->name('wedding.edit');
-    Route::get('new-wedding', AddWedding::class)->name('wedding.create');
+    Route::get('/{invitation:subdomain}/edit', EditWeddingPreset::class)->name('invitation.edit');
+    Route::get('new-wedding', AddWedding::class)->name('invitation.create');
 
     Route::view('profile', 'profile')
         ->name('profile');

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Invitation;
 use App\Models\Wedding;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
@@ -10,7 +11,7 @@ use Livewire\Component;
 class EditWeddingPreset extends Component
 {
     // wedding data
-    public Wedding $wedding;
+    public Invitation $invitation;
 
     // before update
     public $section_data;
@@ -47,9 +48,9 @@ class EditWeddingPreset extends Component
     #[Layout('layouts.edit-wedding-preset-layout')]
     public function render() : View
     {
-        $this->wedding->load(['user', 'preset', 'section']);
+        $this->invitation->load(['user', 'preset', 'section']);
 
-        $this->section_data = $this->wedding->section->data;
+        $this->section_data = $this->invitation->section->data;
         $this->new_section_data = $this->section_data;
 
         $this->cover_title = $this->section_data["cover_section"]["cover_title"];
@@ -66,28 +67,28 @@ class EditWeddingPreset extends Component
     public function updatedCoverTitle() :void
     {
         $this->new_section_data["cover_section"]["cover_title"] = $this->cover_title;
-        $this->wedding->section->update([
+        $this->invitation->section->update([
             'data' => $this->new_section_data
         ]);
     }
     public function updatedCoverWeddingDate() :void
     {
         $this->new_section_data["cover_section"]["cover_wedding_date"] = $this->cover_wedding_date;
-        $this->wedding->section->update([
+        $this->invitation->section->update([
             'data' => $this->new_section_data
         ]);
     }
     public function updatedBannerQuote() :void
     {
         $this->new_section_data["banner_section"]["banner_quote"] = $this->banner_quote;
-        $this->wedding->section->update([
+        $this->invitation->section->update([
             'data' => $this->new_section_data
         ]);
     }
     public function updatedBannerTitle() :void
     {
         $this->new_section_data["banner_section"]["banner_title"] = $this->banner_title;
-        $this->wedding->section->update([
+        $this->invitation->section->update([
             'data' => $this->new_section_data
         ]);
     }
@@ -95,7 +96,7 @@ class EditWeddingPreset extends Component
     public function updatedCoverTitleFontStyle() :void
     {
         $this->new_section_data["customize"]["cover_title_font_style"] = $this->cover_title_font_style;
-        $this->wedding->section->update([
+        $this->invitation->section->update([
             'data' => $this->new_section_data
         ]);
     }
@@ -103,7 +104,7 @@ class EditWeddingPreset extends Component
     public function updatedCoverTitleTextColor() :void
     {
         $this->new_section_data["customize"]["cover_title_text_color"] = $this->cover_title_text_color;
-        $this->wedding->section->update([
+        $this->invitation->section->update([
             'data' => $this->new_section_data
         ]);
     }

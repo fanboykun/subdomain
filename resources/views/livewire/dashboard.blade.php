@@ -9,7 +9,7 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="flex items-center justify-between py-4 bg-white dark:bg-gray-800">
                     <div class="px-2">
-                        <a href="{{ route('wedding.create') }}" class="inline-flex items-center text-gray-200 bg-green-700 font-medium rounded-md text-sm px-5 py-1.5 hover:bg-green-500 hover:text-white hover:shadow-md hover:shadow-green-800 transition ease-in-out duration-150">Add New Wedding</a>
+                        <a href="{{ route('invitation.create') }}" class="inline-flex items-center text-gray-200 bg-green-700 font-medium rounded-md text-sm px-5 py-1.5 hover:bg-green-500 hover:text-white hover:shadow-md hover:shadow-green-800 transition ease-in-out duration-150">Add New Invitation</a>
                     </div>
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative px-2">
@@ -18,7 +18,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="search" wire:model.live.debounce.500ms="search" id="table-search-users" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search wedding by subdomain">
+                        <input type="search" wire:model.live.debounce.500ms="search" id="table-search-users" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search invitation by subdomain">
                     </div>
                 </div>
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -51,30 +51,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($weddings as $wedding)
+                        @forelse ($invitations as $invitation)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
-                                {{ $wedding->bride }}
+                                {{ $invitation->bride }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $wedding->groom }}
+                                {{ $invitation->groom }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('wedding.home', ['wedding' => $wedding]) }}" target="_blank">{{ $wedding->fullSUbDomain() }}</a>
+                                <a href="{{ route('invitation.home', ['invitation' => $invitation]) }}" target="_blank">{{ $invitation->fullSUbDomain() }}</a>
                             </td>
                             <td class="px-6 py-4">
-                                {{ $wedding->date->format('d F Y') }}
+                                {{ $invitation->main_wedding_date->format('d F Y') }}
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full {{ $wedding->status ? 'bg-green-500' : 'bg-red-500' }} mr-2"></div> {{ $wedding->status ? 'Active' : 'Inactive' }}
+                                    <div class="h-2.5 w-2.5 rounded-full {{ $invitation->status ? 'bg-green-500' : 'bg-red-500' }} mr-2"></div> {{ $invitation->status ? 'Active' : 'Inactive' }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                {{ $wedding->preset->name }}
+                                {{ $invitation->preset->name }}
                             </td>
                             <td class="px-6 py-4">
-                                @foreach ($wedding->section->data as $key => $preset_data)
+                                @foreach ($invitation->section->data as $key => $preset_data)
                                     <span>{{ $key }}</span><br>
                                     @if(is_array($preset_data))
                                         @forelse ($preset_data as $k => $pd)
@@ -88,7 +88,7 @@
                             <td class="px-6 py-4">
                                 <!-- Modal toggle -->
                                 {{-- <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
-                                <a href="{{ route('wedding.edit', ['wedding' => $wedding]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="{{ route('invitation.edit', ['invitation' => $invitation]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                         </tr>
                         @empty
